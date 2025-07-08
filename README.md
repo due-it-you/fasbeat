@@ -39,8 +39,28 @@ SNSやYoutubeを活用して自身の楽曲を販売するのはhiphop以外に�
 
 
 ## ■ 機能の実装方針予定
-一般的なCRUD以外の実装予定の機能についてそれぞれどのようなイメージ(使用するAPIやgemなど)で実装する予定なのか現状考えているもので良いので教えて下さい。
-
 - deviseを用いてログイン機能を実装
 - 各SNSのAPIとOAuthを用いてSNSへの投稿機能を実装
 - Sidekiqを用いて投稿の予約機能を実装
+
+## 技術スタック
+- フロントエンド: React(+ Vite) ver. 19.1 , TailwindCSS ver. 4.1
+- バックエンド: Ruby , Rails API ver. 7.2
+- データベース: PostgreSQL ver. 15
+- フロントエンドテストツール: Vitest ver. 3.2.3
+- JS静的解析ツール: ESLint
+- 自動フォーマッター: Prettier
+- CI/CD: Github Actions
+- デプロイサーバー: Vercel(フロントエンド), Render(バックエンド)
+
+### 使用予定のgem
+- devise
+- omniauth
+- sidekiq
+- streamio-ffmpeg
+- rails-i18n
+- bullet
+
+## 動画生成について
+動画生成処理については、ffmpegを用いて、Sidekiqによって非同期的に処理を行います。
+生成した動画やサムネイルなどの情報はCarrierWaveでAWS S3にアップロードするようにします。
